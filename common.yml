@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  become: true
+  become_user: root
+  tasks:
+    - name: install htop vim zsh
+      apt:
+        state: present
+        name:
+         - htop
+         - vim
+         - zsh
+
+    - name: install discord
+      apt:
+        deb: https://discord.com/api/download?platform=linux&format=deb
+
+    - name: install Visual Code
+      apt:
+        deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
