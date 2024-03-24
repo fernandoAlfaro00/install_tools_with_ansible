@@ -1,0 +1,21 @@
+---
+- name: install htop vim zsh
+  apt:
+    state: present
+    name:
+      - htop
+      - vim
+      - zsh
+      - fzf
+
+- name: install discord
+  apt:
+    deb: https://discord.com/api/download?platform=linux&format=deb
+
+- name: install Visual Code
+  apt:
+    deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+
+- name: install albert
+  apt:
+    deb: https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_22.04/amd64/albert_0.23.0-0+605.1_amd64.deb

@@ -1,0 +1,28 @@
+---
+- name: Install required system packages
+  apt:
+    state: latest
+    update_cache: yes
+    name:
+      - gnupg
+      - software-properties-common
+
+- name: Install the HashiCorp GPG key.
+  apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    keyring: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    state: present
+
+- name: Add the official HashiCorp repository
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com jammy main
+    state: present
+    filename: hashicorp
+
+- name: Install Terraform from the new repository
+  apt:
+    state: present
+    update_cache: true
+    name:
+    - terraform
+

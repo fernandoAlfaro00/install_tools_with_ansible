@@ -24,5 +24,9 @@ ansible --version
 
 # Uso 
 
+```ansible-playbook --ask-become-pass <playbook.yaml>```
 
-```ansible-playbook --ask-become-pass <playbook.yml>```
+
+# Ejecutar script de instalacion  y ejecucion playbook
+
+```./init.sh```
