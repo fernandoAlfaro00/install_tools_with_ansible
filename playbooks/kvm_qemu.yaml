@@ -1,0 +1,35 @@
+---
+- name: Install Prerequisite Tools KVM
+  apt:
+    state: latest
+    update_cache: yes
+    name:
+      - curl
+      - xml2
+
+- name: Install KVM and libvirt
+  apt:
+    state: latest
+    update_cache: yes
+    name:
+      - bridge-utils 
+      - cpu-checker 
+      - libguestfs-tools 
+      - libvirt-clients 
+      - libvirt-daemon-system
+      - libvirt-dev 
+      - qemu-kvm 
+      - virt-manager
+      - vagrant-libvirt
+
+- name: adding existing user '{{ ansible_env.USER }}' to group libvirt
+  user:
+    name: '{{ ansible_env.USER }}'
+    groups: "libvirt"
+    append: yes
+    
+- name: Enable and start libvirtd
+  service:
+    name: libvirtd
+    state: started
+    enabled: yes

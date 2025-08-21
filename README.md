@@ -1,32 +1,46 @@
-# install_tools_with_ansible
+# Install Tools with Ansible
+
+# Requirements
+- Python 3.x
+- Curl 
+
+# Tested OS
+
+| Distribution | Tested | Status             |
+|-------------|--------|------------------|
+| Debian 12   | ✅      |Work in progress  |
 
 
-# install ansible 
 
+# Tools to Install
+- KVM/Qemu
+- Docker
+- Minikube
+- AWS Client
+- Terraform
+- Vagrant
+- kubectl
+- etc
+
+
+
+# Install Ansible in a Virtual Environment
 ```bash
-sudo apt  install curl
-
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-
-python3 get-pip.py --user
-
-python3 -m pip -V
-
-python3 -m pip install --user ansible
-
-python3 -m pip list
-
-export PATH=$PATH:~/.local/bin
-
-ansible --version
-
+sudo apt  install curl -y
+python3 -m venv venv_ansible
+venv_ansible/bin/pip3 install ansible
+source venv_ansible/bin/activate
 ```
 
-# Uso 
+# Run a Playbook
 
-```ansible-playbook --ask-become-pass <playbook.yaml>```
+```bash 
+ansible-playbook --ask-become-pass <playbook.yaml>
+```
 
 
-# Ejecutar script de instalacion  y ejecucion playbook
+# Create the Virtual Environment and Run the Main Playbook 
 
-```./init.sh```
+```bash
+./init.sh
+```
