@@ -1,1 +1,17 @@
+# Virtual environments
 venv_ansible/
+*.pyc
+__pycache__/
+
+# Config files
+*.env
+secrets.yaml
+credentials.json
+*.pem
+*.key
+
+# Logs
+*.log
+
+# Otros archivos temporales
+*.tmp

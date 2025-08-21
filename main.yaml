@@ -58,3 +58,10 @@
       - aws-cli
       - all
 
+    - name: Include tasks install bad 
+      ansible.builtin.include_tasks:
+        file: playbooks/bad.yaml
+      tags: 
+      - bad
+      - all
+

@@ -1,0 +1,4 @@
+---
+- name: install discord
+  apt:
+    deb: https://discord.com/api/download?platform=linux&format=rpm
