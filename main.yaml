@@ -3,29 +3,58 @@
   become: true
   become_user: root
   tasks:
-    # - name: Include tasks install docker 
-    #   ansible.builtin.include_tasks:
-    #     file: tasks/docker.yaml
-
-    # - name: Include tasks install terraform 
-    #   ansible.builtin.include_tasks:
-    #     file: tasks/terraform.yaml
-
-    # - name: Include tasks install terraform 
-    #   ansible.builtin.include_tasks:
-    #     file: tasks/vagrant.yaml
-
-    # - name: Include tasks install k8s tools 
-    #   ansible.builtin.include_tasks:
-    #     file: tasks/k8s_tools.yaml
-
-    # - name: Include tasks install helm 
-    #   ansible.builtin.include_tasks:
-    #     file: tasks/other.yaml
-
-    # - name: Install oh-my-zsh package.
-    #   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    
     - name: Include tasks install AWS cli 
       ansible.builtin.include_tasks:
-        file: tasks/aws_cli.yaml
+        file: playbooks/kvm_qemu.yaml
+      tags: 
+      - kvm-qemu
+      - all
+
+    - name: Include tasks install docker 
+      ansible.builtin.include_tasks:
+        file: playbooks/docker.yaml
+      tags: 
+      - docker
+      - all
+
+    - name: Include tasks install terraform 
+      ansible.builtin.include_tasks:
+        file: playbooks/terraform.yaml
+      tags: 
+      - terraform
+      - all
+
+    - name: Include tasks install vagrant 
+      ansible.builtin.include_tasks:
+        file: playbooks/vagrant.yaml
+      tags: 
+      - vagrant
+      - all
+
+    - name: Include tasks install k8s tools 
+      ansible.builtin.include_tasks:
+        file: playbooks/k8s_tools.yaml
+      tags: 
+      - devops
+      - all
+
+    - name: Include tasks install helm 
+      ansible.builtin.include_tasks:
+        file: playbooks/other.yaml
+      tags: 
+      - other
+      - all
+
+    - name: Install oh-my-zsh package.
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      tags: 
+      - oh-my-zsh
+      - all
+      
+    - name: Include tasks install AWS cli 
+      ansible.builtin.include_tasks:
+        file: playbooks/aws_cli.yaml
+      tags: 
+      - aws-cli
+      - all
+
