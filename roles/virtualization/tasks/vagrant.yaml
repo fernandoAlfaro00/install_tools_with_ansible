@@ -7,7 +7,7 @@
 
 - name: Add the official HashiCorp repository
   apt_repository:
-    repo: deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com jammy main
+    repo: deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_lsb.codename }} main
     state: present
     filename: hashicorp
 
