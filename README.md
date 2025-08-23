@@ -3,6 +3,7 @@
 # Requirements
 - Python 3.x
 - Curl 
+- Dialog
 
 # Tested OS
 
@@ -27,6 +28,7 @@
 # Install Ansible in a Virtual Environment
 ```bash
 sudo apt  install curl -y
+sudo apt install dialog -y
 python3 -m venv venv_ansible
 venv_ansible/bin/pip3 install ansible
 source venv_ansible/bin/activate
@@ -44,3 +46,10 @@ ansible-playbook --ask-become-pass <playbook.yaml>
 ```bash
 ./init.sh
 ```
+
+# Mode Dev
+
+```bash
+export DEVMODE=true
+```
+

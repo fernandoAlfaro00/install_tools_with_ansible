@@ -1,9 +1,20 @@
 #!/bin/bash
+
+
+ANSIBLE_CHECK=""
+if [ "$DEVMODE" != "true" ]
+then 
+ trap cleanup EXIT
+else
+ set -x
+ ANSIBLE_CHECK="--check"
+fi
+
 cleanup() {
     rm -rf venv_ansible
     echo -e "\033[0;32mCleaned venv_ansible\033[0m"
 }
-trap cleanup EXIT
+
 
 spinner() {
     pid=$1
@@ -28,7 +39,21 @@ source venv_ansible/bin/activate
 echo -e "====================================================================="
 echo -e "\033[0;31mEnter your sudo password to continue with the installation\033[0m"
 
-ansible-playbook --ask-become-pass main.yaml --tags kvmqemu
+
+./menu.sh
+
+sleep 0.5 
+
+EXTRA_VARS=$(<temp_option_select)
+
+CMD="ansible-playbook --ask-become-pass main.yaml -e "$EXTRA_VARS" $ANSIBLE_CHECK"
+
+eval $CMD
+
+if [ "$DEVMODE" != "true" ]
+then 
+ rm temp_option_select
+fi
 
 if [ $? -eq 0 ]; then
     echo -e "\033[0;36mAll tasks completed successfully! ✅\033[0m"

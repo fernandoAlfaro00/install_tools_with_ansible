@@ -22,9 +22,9 @@
       - virt-manager
       - vagrant-libvirt
 
-- name: adding existing user '{{ ansible_env.USER }}' to group libvirt
+- name: adding existing user "{{ current_user }}" to group libvirt
   user:
-    name: '{{ ansible_env.USER }}'
+    name: "{{ current_user }}"
     groups: "libvirt"
     append: yes
     

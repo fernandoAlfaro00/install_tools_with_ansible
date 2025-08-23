@@ -10,14 +10,13 @@
     
 - name: Add Docker GPG apt Key
   apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    keyring: /etc/apt/keyrings/docker.gpg
+    url: https://download.docker.com/linux/debian/gpg
+    keyring: /etc/apt/keyrings/docker.asc
     state: present
 
 - name: Add Docker Repository
   apt_repository:
-    # repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
-    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_lsb.codename }} stable
     state: present
     filename: docker
 
@@ -32,14 +31,8 @@
       - docker-buildx-plugin
       - docker-compose-plugin
 
-- name: adding existing user "akira" to group docker
+- name: adding existing user "{{ current_user }}" to group docker
   user:
-    name: "akira"
+    name: "{{ current_user }}"
     groups: "docker"
     append: yes
-
-- name: activate the changes to groups.
-  shell: newgrp docker
-  become: yes
-  become_user: akira
-  

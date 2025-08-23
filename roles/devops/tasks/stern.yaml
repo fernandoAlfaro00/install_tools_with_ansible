@@ -1,0 +1,8 @@
+- name: Download the stern.
+  get_url: url=https://github.com/stern/stern/releases/download/v1.26.0/stern_1.26.0_linux_amd64.tar.gz dest=/tmp/stern_1.26.0_linux_amd64.tar.gz
+  register: stern_linux_binary
+
+- name: Unarchive and copy the stern installer.
+  unarchive: src=/tmp/stern_1.26.0_linux_amd64.tar.gz dest=/usr/bin copy=no creates=/usr/bin/stern
+  when: stern_linux_binary.changed
+  register: stern_linux_binary
