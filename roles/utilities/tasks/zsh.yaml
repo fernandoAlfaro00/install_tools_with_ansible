@@ -1,0 +1,12 @@
+- name: install zsh
+  apt:
+    state: present
+    name:
+      - zsh
+
+- name: Install oh-my-zsh package.
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  async: 45
+  poll: 10
+  ignore_errors: true
+  

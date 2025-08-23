@@ -1,0 +1,7 @@
+- name: Setup KVM/Qemu
+  include_tasks: kvm.yaml
+  when: install_kvm
+
+- name: Setup Vagrant 
+  include_tasks: vagrant.yaml
+  when: install_vagrant

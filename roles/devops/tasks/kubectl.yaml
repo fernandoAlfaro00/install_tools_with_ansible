@@ -1,0 +1,11 @@
+
+- name: install kubectl
+  ansible.builtin.get_url: 
+    url: https://dl.k8s.io/release/v1.29.2/bin/linux/amd64/kubectl
+    dest: /usr/bin/
+    mode: +x
+
+- name: autocomplete and alias kubectl.
+  shell: |
+    echo 'alias k=kubectl' >>/home/akira/.zshrc
+    echo 'compdef __start_kubectl k' >>/home/akira/.zshrc

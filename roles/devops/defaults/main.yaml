@@ -1,0 +1,7 @@
+install_aws_cli: false
+install_helm: false
+install_kubectl: false
+install_minikube: false
+install_stern: false
+install_terraform: false
+install_docker: false

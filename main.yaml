@@ -1,60 +1,12 @@
----
 - hosts: localhost
-  become: true
+  become: yes
   become_user: root
-  tasks:
-    - name: Include tasks install AWS cli 
-      ansible.builtin.include_tasks:
-        file: playbooks/kvm_qemu.yaml
-      tags: 
-      - kvm-qemu
-      - all
-
-    - name: Include tasks install docker 
-      ansible.builtin.include_tasks:
-        file: playbooks/docker.yaml
-      tags: 
-      - docker
-      - all
-
-    - name: Include tasks install terraform 
-      ansible.builtin.include_tasks:
-        file: playbooks/terraform.yaml
-      tags: 
-      - terraform
-      - all
-
-    - name: Include tasks install vagrant 
-      ansible.builtin.include_tasks:
-        file: playbooks/vagrant.yaml
-      tags: 
-      - vagrant
-      - all
-
-    - name: Include tasks install k8s tools 
-      ansible.builtin.include_tasks:
-        file: playbooks/k8s_tools.yaml
-      tags: 
-      - devops
-      - all
-
-    - name: Include tasks install helm 
-      ansible.builtin.include_tasks:
-        file: playbooks/other.yaml
-      tags: 
-      - other
-      - all
-
-    - name: Install oh-my-zsh package.
-      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      tags: 
-      - oh-my-zsh
-      - all
-      
-    - name: Include tasks install AWS cli 
-      ansible.builtin.include_tasks:
-        file: playbooks/aws_cli.yaml
-      tags: 
-      - aws-cli
-      - all
-
+  vars:
+    current_user: "{{ lookup('env','USER') }}"
+  roles:
+    - role: devops
+      when: install_devops
+    - role: virtualization
+      when: install_virtualization
+    - role: utilities
+      when: install_utilities

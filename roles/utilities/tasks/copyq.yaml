@@ -1,0 +1,7 @@
+---
+- name: install Copyq
+  apt:
+    state: present
+    update_cache: yes
+    name:
+      - copyq

@@ -1,0 +1,9 @@
+install_code: false
+install_copyq: false
+install_discord: false
+install_htop: false
+install_rofi: false
+install_timeshift: false
+install_vim: false
+install_zsh: false
+install_fzf: false

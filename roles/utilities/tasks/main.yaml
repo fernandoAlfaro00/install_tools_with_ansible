@@ -1,0 +1,35 @@
+- name: Setup Visual Code 
+  include_tasks: code.yaml
+  when: install_code
+
+- name: Setup Copyq 
+  include_tasks: copyq.yaml
+  when: install_copyq
+
+- name: Setup Discord 
+  include_tasks: discord.yaml
+  when: install_discord
+
+- name: Setup Htop 
+  include_tasks: htop.yaml
+  when: install_htop
+
+- name: Setup Rofi 
+  include_tasks: rofi.yaml
+  when: install_rofi
+
+- name: Setup Timeshift 
+  include_tasks: timeshift.yaml
+  when: install_timeshift
+
+- name: Setup Vim 
+  include_tasks: vim.yaml
+  when: install_vim
+
+- name: Setup ZSH 
+  include_tasks: zsh.yaml
+  when: install_zsh
+
+- name: Setup fzf 
+  include_tasks: fzf.yaml
+  when: install_fzf

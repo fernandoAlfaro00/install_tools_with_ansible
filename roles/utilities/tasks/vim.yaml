@@ -1,0 +1,6 @@
+- name: install Htop
+  apt:
+    state: present
+    update_cache: yes
+    name:
+      - htop

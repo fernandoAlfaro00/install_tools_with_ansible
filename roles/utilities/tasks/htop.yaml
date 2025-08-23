@@ -1,0 +1,6 @@
+- name: install Vim
+  apt:
+    state: present
+    update_cache: yes
+    name:
+      - vim

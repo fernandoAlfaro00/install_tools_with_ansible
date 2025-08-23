@@ -1,0 +1,6 @@
+- name: install fzf
+  apt:
+    state: present
+    update_cache: yes
+    name:
+      - fzf
