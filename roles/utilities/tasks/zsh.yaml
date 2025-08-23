@@ -4,9 +4,13 @@
     name:
       - zsh
 
-- name: Install oh-my-zsh package.
-  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  async: 45
-  poll: 10
+- name: Download ohmyzsh
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: "/home/{{ current_user }}/install.sh"
+
+- name: Install ohmyzsh
+  ansible.builtin.script:
+    cmd: "/home/{{ current_user }}/install.sh"
   ignore_errors: true
   
