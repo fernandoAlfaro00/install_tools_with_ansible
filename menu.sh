@@ -21,9 +21,11 @@ case $PROFILE in
     install_devops=true
     CHOICES=$(dialog --separate-output --checklist "Selecciona herramientas DevOps:" 15 50 5 \
     docker "" off \
-    podman "" off \
+    aws_cli "" off \
     kubectl "" off \
     helm "" off \
+    minikube "" off \
+    stern "" off \
     terraform "" off 2>&1 >/dev/tty)
     ;;
   2)
@@ -36,9 +38,13 @@ case $PROFILE in
     install_utilities=true
     CHOICES=$(dialog --separate-output --checklist "Selecciona Utilities:" 15 50 5 \
     zsh "" off \
+    fzf "" off \
+    vim "" off \
     rofi "" off \
+    htop "" off \
     copyq "" off \
     vscode "" off \
+    timeshift "" off \
     discord "" off 2>&1 >/dev/tty)
     ;;
   4)

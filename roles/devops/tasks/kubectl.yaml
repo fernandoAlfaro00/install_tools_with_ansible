@@ -7,5 +7,5 @@
 
 - name: autocomplete and alias kubectl.
   shell: |
-    echo 'alias k=kubectl' >>/home/akira/.zshrc
-    echo 'compdef __start_kubectl k' >>/home/akira/.zshrc
+    echo 'alias k=kubectl' >> /home/{{ current_user }}/.zshrc
+    echo 'compdef __start_kubectl k' >> /home/{{ current_user }}/.zshrc
