@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cleanup() {
+    rm -rf venv_ansible
+    echo -e "\033[0;32mCleaned venv_ansible\033[0m"
+}
 
 ANSIBLE_CHECK=""
 if [ "$DEV_MODE" != "true" ]
@@ -10,10 +14,7 @@ else
  ANSIBLE_CHECK="--check"
 fi
 
-cleanup() {
-    rm -rf venv_ansible
-    echo -e "\033[0;32mCleaned venv_ansible\033[0m"
-}
+
 
 
 spinner() {
@@ -40,7 +41,7 @@ echo -e "====================================================================="
 echo -e "\033[0;31mEnter your sudo password to continue with the installation\033[0m"
 
 
-./menu.sh
+source menu.sh 
 
 sleep 0.5 
 
