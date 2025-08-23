@@ -2,7 +2,7 @@
 
 
 ANSIBLE_CHECK=""
-if [ "$DEVMODE" != "true" ]
+if [ "$DEV_MODE" != "true" ]
 then 
  trap cleanup EXIT
 else
@@ -50,7 +50,7 @@ CMD="ansible-playbook --ask-become-pass main.yaml -e "$EXTRA_VARS" $ANSIBLE_CHEC
 
 eval $CMD
 
-if [ "$DEVMODE" != "true" ]
+if [ "$DEV_MODE" != "true" ]
 then 
  rm temp_option_select
 fi

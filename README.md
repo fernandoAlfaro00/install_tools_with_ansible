@@ -47,9 +47,9 @@ ansible-playbook --ask-become-pass <playbook.yaml>
 ./init.sh
 ```
 
-# Mode Dev
+# Dev Mode
 
 ```bash
-export DEVMODE=true
+export DEV_MODE=true
 ```
 
