@@ -1,4 +1,4 @@
-install_code: false
+install_vscode: false
 install_copyq: false
 install_discord: false
 install_htop: false

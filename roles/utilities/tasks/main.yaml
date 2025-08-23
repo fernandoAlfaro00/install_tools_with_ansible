@@ -1,6 +1,6 @@
 - name: Setup Visual Code 
-  include_tasks: code.yaml
-  when: install_code
+  include_tasks: vscode.yaml
+  when: install_vscode
 
 - name: Setup Copyq 
   include_tasks: copyq.yaml

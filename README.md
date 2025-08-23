@@ -4,6 +4,7 @@
 - Python 3.x
 - Curl 
 - Dialog
+- python3.x-venv
 
 # Tested OS
 
@@ -29,6 +30,7 @@
 ```bash
 sudo apt  install curl -y
 sudo apt install dialog -y
+sudo apt install python3.11-venv -y 
 python3 -m venv venv_ansible
 venv_ansible/bin/pip3 install ansible
 source venv_ansible/bin/activate
