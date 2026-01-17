@@ -30,7 +30,7 @@
 ```bash
 sudo apt  install curl -y
 sudo apt install dialog -y
-sudo apt install python3.11-venv -y 
+sudo apt install <your version python>-venv -y 
 python3 -m venv venv_ansible
 venv_ansible/bin/pip3 install ansible
 source venv_ansible/bin/activate
