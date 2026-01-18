@@ -54,27 +54,27 @@ install_required_packages() {
 install_required_packages
 echo -e "${CYAN}Initializing virtual environment...${RESET}"
 uv venv --python 3.13 -qq --seed --no-project --clear .venv
-.venv/bin/pip3 install ansible --quiet
+.venv/bin/pip3 install ansible==13.2.0 --quiet
 
 echo "Activacion entorno virtual"
 source $PWD/.venv/bin/activate
 
 echo -e "====================================================================="
-echo -e "\033[0;31mEnter your sudo password to continue with the installation\033[0m"
+echo -e "${GREEN} Enter your sudo password to continue with the installation ${RESET}"
 source "$PATH_SCRIPTS/menu.sh" 
 
 sleep 0.5 
 
 EXTRA_VARS=$(<$PWD/temp_option_select)
 
-CMD="ansible-playbook --ask-become-pass main.yaml -e "$EXTRA_VARS" $ANSIBLE_CHECK"
+CMD="ansible-playbook --ask-become-pass main.yaml -e $EXTRA_VARS"
 
 eval $CMD
 
 if [ $? -eq 0 ]; then
-    echo -e "\033[0;36mAll tasks completed successfully! ✅\033[0m"
+    echo -e "${GREEN}All tasks completed successfully!${RESET}"
     exit 0
 else
-    echo -e "\033[0;31mTasks did not complete successfully!\033[0m"
+    echo -e "${RED}Tasks did not complete successfully!${RESET}"
     exit 1
 fi

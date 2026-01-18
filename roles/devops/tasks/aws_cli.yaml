@@ -1,20 +1,20 @@
 ---
 # https://github.com/xchangebit/ansible-aws-cli/blob/master/tasks/main.yml
-- name: Install package dependencies.
+- name: AWS CLI - Install package dependencies.
   package: name={{ item }} state=present
   with_items:
     - unzip
 
-- name: Download the awscli v2.
+- name: AWS CLI - Download the awscli v2.
   get_url: url=https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip dest=/tmp/awscliv2.zip
   register: aws_cli_download_bundle
 
-- name: Unarchive the installer.
+- name: AWS CLI - Unarchive the installer.
   unarchive: src=/tmp/awscliv2.zip dest=/tmp copy=no creates=/tmp/awscliv2
-  when: aws_cli_download_bundle.changed
+  when: aws_cli_download_bundle.changed 
   register: aws_cli_unarchive_installer
 
-- name: Install awscli package.
+- name: AWS CLI - Install awscli package.
   shell: /tmp/aws/install
   args:
     creates: /usr/local/bin/aws

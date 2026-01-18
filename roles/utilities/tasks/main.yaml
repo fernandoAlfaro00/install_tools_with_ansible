@@ -1,35 +1,39 @@
 - name: Setup Visual Code 
   include_tasks: vscode.yaml
-  when: install_vscode
+  when: install_vscode | bool
 
 - name: Setup Copyq 
   include_tasks: copyq.yaml
-  when: install_copyq
+  when: install_copyq | bool
 
 - name: Setup Discord 
   include_tasks: discord.yaml
-  when: install_discord
+  when: install_discord | bool
 
 - name: Setup Htop 
   include_tasks: htop.yaml
-  when: install_htop
+  when: install_htop | bool
 
 - name: Setup Rofi 
   include_tasks: rofi.yaml
-  when: install_rofi
+  when: install_rofi | bool
 
 - name: Setup Timeshift 
   include_tasks: timeshift.yaml
-  when: install_timeshift
+  when: install_timeshift | bool
 
 - name: Setup Vim 
   include_tasks: vim.yaml
-  when: install_vim
+  when: install_vim | bool
 
 - name: Setup ZSH 
   include_tasks: zsh.yaml
-  when: install_zsh
+  when: install_zsh | bool
 
 - name: Setup fzf 
   include_tasks: fzf.yaml
-  when: install_fzf
+  when: install_fzf | bool
+
+- name: Setup brave 
+  include_tasks: brave.yaml
+  when: install_brave | bool

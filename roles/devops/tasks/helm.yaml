@@ -1,24 +1,31 @@
 ---
-- name: Install required system packages
+- name: Helm - Install required system packages
   apt:
     state: latest
     update_cache: yes
     name:
+      - curl 
+      - gpg
       - apt-transport-https
 
-- name: Install the Helm GPG key.
-  apt_key:
-    url: https://baltocdn.com/helm/signing.asc 
-    keyring: /usr/share/keyrings/helm.gpg
-    state: present
 
-- name: Add the Repo Helm
+- name:  Helm - Install the Helm GPG key.
+  ansible.builtin.get_url:
+    url: https://packages.buildkite.com/helm-linux/helm-debian/gpgkey
+    dest: /tmp/helm.asc
+
+- name: Helm - dearmor the downloaded signing key file
+  shell: gpg --batch --dearmor -o /usr/share/keyrings/helm.gpg /tmp/helm.asc
+  args:
+    creates: /usr/share/keyrings/helm.gpg
+
+- name: Helm - Add the Repo Helm
   apt_repository:
-    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main
+    repo: deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main
     state: present
     filename: helm-stable-debian
 
-- name: Install Helm
+- name: Helm - Install Helm
   apt:
     state: present
     update_cache: true

@@ -1,5 +1,5 @@
 ---
-- name: install Timeshift
+- name: install rofi
   apt:
     state: present
     name:

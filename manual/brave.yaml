@@ -10,9 +10,9 @@
       - curl
       
   - name: Add Brave GPG apt Key
-    apt_key:
+    ansible.builtin.get_url:
       url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-      keyring: /usr/share/keyrings/brave-browser-archive-keyring.gpg
+      dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
       state: present
 
   - name: Add Brave browser repository
