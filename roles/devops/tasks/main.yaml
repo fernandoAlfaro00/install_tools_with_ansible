@@ -1,27 +1,27 @@
 - name: Setup AWS Cli
   include_tasks: aws_cli.yaml
-  when: install_aws_cli
+  when: install_aws_cli | bool
 
 - name: Setup Docker 
   include_tasks: docker.yaml
-  when: install_docker
+  when: install_docker | bool
 
 - name: Setup Helm
   include_tasks: helm.yaml
-  when: install_helm
+  when: install_helm | bool
 
 - name: Setup kubectl
   include_tasks: kubectl.yaml
-  when: install_kubectl
+  when: install_kubectl | bool
 
 - name: Setup Minikube
   include_tasks: minikube.yaml
-  when: install_minikube
+  when: install_minikube | bool
 
 - name: Setup Stern
   include_tasks: stern.yaml
-  when: install_stern
+  when: install_stern | bool
 
 - name: Setup Terraform
   include_tasks: terraform.yaml
-  when: install_terraform
+  when: install_terraform | bool

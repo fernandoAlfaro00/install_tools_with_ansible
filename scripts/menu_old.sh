@@ -45,6 +45,7 @@ case $PROFILE in
     copyq "" off \
     vscode "" off \
     timeshift "" off \
+    brave "" off \
     discord "" off 2>&1 >/dev/tty)
     ;;
   4)
@@ -63,6 +64,6 @@ for item in $CHOICES; do
 done
 
 # Ejecutar Ansible
-echo \"$EXTRA_VARS\" > temp_option_select
+echo \"$EXTRA_VARS\" > $PWD/temp_option_select
 
 clear

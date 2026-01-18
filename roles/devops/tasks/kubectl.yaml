@@ -1,7 +1,6 @@
-
 - name: install kubectl
   ansible.builtin.get_url: 
-    url: https://dl.k8s.io/release/v1.29.2/bin/linux/amd64/kubectl
+    url: https://dl.k8s.io/release/v1.34.2/bin/linux/amd64/kubectl
     dest: /usr/bin/
     mode: +x
 

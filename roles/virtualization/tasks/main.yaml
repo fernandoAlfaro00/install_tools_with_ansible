@@ -1,7 +1,7 @@
 - name: Setup KVM/Qemu
   include_tasks: kvm.yaml
-  when: install_kvm
+  when: install_kvm | bool
 
 - name: Setup Vagrant 
   include_tasks: vagrant.yaml
-  when: install_vagrant
+  when: install_vagrant | bool

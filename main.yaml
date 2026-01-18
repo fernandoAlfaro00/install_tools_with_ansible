@@ -5,8 +5,8 @@
     current_user: "{{ lookup('env','USER') }}"
   roles:
     - role: devops
-      when: install_devops
+      when: install_devops | bool
     - role: virtualization
-      when: install_virtualization
+      when: install_virtualization | bool
     - role: utilities
-      when: install_utilities
+      when: install_utilities | bool
