@@ -4,7 +4,7 @@
 - Python 3.x
 - Curl 
 - Dialog
-- python3.x-venv
+- uv
 
 # Tested OS
 
@@ -25,8 +25,19 @@
 - etc
 
 
+# Create the Virtual Environment and Run the Main Playbook 
 
-# Install Ansible in a Virtual Environment
+```bash
+./init.sh
+```
+
+
+# Dev Mode
+```bash
+export DEV_MODE=true
+```
+
+<!-- \# Install Ansible in a Virtual Environment
 ```bash
 sudo apt  install curl -y
 sudo apt install dialog -y
@@ -34,24 +45,10 @@ sudo apt install <your version python>-venv -y
 python3 -m venv venv_ansible
 venv_ansible/bin/pip3 install ansible
 source venv_ansible/bin/activate
-```
+``` -->
 
-# Run a Playbook
+<!-- # Run a Playbook
 
 ```bash 
 ansible-playbook --ask-become-pass <playbook.yaml>
-```
-
-
-# Create the Virtual Environment and Run the Main Playbook 
-
-```bash
-./init.sh
-```
-
-# Dev Mode
-
-```bash
-export DEV_MODE=true
-```
-
+``` -->

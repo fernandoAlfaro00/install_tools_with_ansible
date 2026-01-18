@@ -63,6 +63,6 @@ for item in $CHOICES; do
 done
 
 # Ejecutar Ansible
-echo \"$EXTRA_VARS\" > temp_option_select
+echo \"$EXTRA_VARS\" > $PWD/temp_option_select
 
 clear

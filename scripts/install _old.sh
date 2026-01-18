@@ -5,6 +5,12 @@ cleanup() {
     echo -e "\033[0;32mCleaned venv_ansible\033[0m"
 }
 
+
+install_required_packages() {
+
+}
+
+
 ANSIBLE_CHECK=""
 if [ "$DEV_MODE" != "true" ]
 then 
@@ -13,9 +19,6 @@ else
  set -x
  ANSIBLE_CHECK="--check"
 fi
-
-
-
 
 spinner() {
     pid=$1
@@ -34,7 +37,7 @@ echo -e "\033[0;36mInitializing virtual environment...\033[0m"
 python3 -m venv venv_ansible 
 venv_ansible/bin/pip3 -q install ansible &
 pid=$!
-spinner $pid "Installing Ansible" 
+spinner $pid "Installing Ansible"
 
 source venv_ansible/bin/activate
 echo -e "====================================================================="
