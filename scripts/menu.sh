@@ -1,22 +1,15 @@
 #!/bin/bash
-LOG_FILE="install_tools.logs"
 PROFILE_CHOICE=""
-EXTRA_VARS=""
-
-save_log() {
-  echo "$(date) $1" | tee -a $LOG_FILE
-}
-
+TOOLS_CHOICES=""
 main() {
   profiles_menu
   tools_menu
-  echo \"$EXTRA_VARS\" > temp_option_select
   clear
 }
 
 #Menú de perfiles
 profiles_menu() {
-  save_log "Funcion: profiles_menu"
+  debug_logs "Funcion: profiles_menu"
   PROFILE_CHOICE=$(dialog --clear --menu "Selecciona un perfil" 15 50 4 \
   1 "DevOps" \
   2 "Virtualización" \
@@ -24,10 +17,10 @@ profiles_menu() {
   4 "Salir" 2>&1 >/dev/tty)
   status_exit_profile=$?
 
-  save_log "Perfil seleccionado : $PROFILE_CHOICE"
+  debug_logs "Perfil seleccionado : $PROFILE_CHOICE"
 
   if [ $status_exit_profile -eq 1 ]; then
-    echo "Se presiono btn cancel"
+    debug_logs "Se presiono btn cancel"
     clear
     exit 0
   fi
@@ -36,7 +29,7 @@ profiles_menu() {
 
 #Menú de herramientas
 tools_menu() {
-  save_log "Funcion: tools_menu"
+  debug_logs "Funcion: tools_menu"
   install_devops=false
   install_virtualization=false
   install_utilities=false
@@ -79,17 +72,17 @@ tools_menu() {
   esac
 
   status_select_tools=$?
-  save_log "herramientas seleccionadas: $TOOLS_CHOICES"
+  debug_logs   "herramientas seleccionadas: $TOOLS_CHOICES"
   if [ $status_select_tools -gt 0 ]; then
     main
   fi
   clear
 
   # Marcar las categorías seleccionadas
-  EXTRA_VARS="install_devops=$install_devops install_virtualization=$install_virtualization install_utilities=$install_utilities"
+  MENU_SELECTED_OPTION="-e install_devops=$install_devops -e install_virtualization=$install_virtualization -e install_utilities=$install_utilities"
 
   if [[ -z $TOOLS_CHOICES  ]]; then 
-    save_log "No se selecciono ninguna herramienta a instalar"
+    debug_logs   "No se selecciono ninguna herramienta a instalar"
     dialog --title "Aviso" --msgbox "Por favor seleccionar una opción" 8 50
     clear
     main
@@ -97,10 +90,9 @@ tools_menu() {
   
   # Marcar herramientas seleccionadas
   for item in $TOOLS_CHOICES; do
-    EXTRA_VARS="$EXTRA_VARS install_$item=true"
+    MENU_SELECTED_OPTION="$MENU_SELECTED_OPTION -e install_$item=true"
   done
 
 }
 
-save_log "Llamada funcion main"
 main

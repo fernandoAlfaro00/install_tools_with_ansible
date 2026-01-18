@@ -7,12 +7,9 @@
 - uv
 
 # Tested OS
-
 | Distribution | Tested | Status             |
 |-------------|--------|------------------|
-| Debian 12   | ✅      |Work in progress  |
-
-
+| Debian 13 (Trixie)   | ✅      | OK  |
 
 # Tools to Install
 - KVM/Qemu
@@ -25,30 +22,10 @@
 - etc
 
 
-# Create the Virtual Environment and Run the Main Playbook 
+# Use 
+
+### install packages
 
 ```bash
-./init.sh
+make install
 ```
-
-
-# Dev Mode
-```bash
-export DEV_MODE=true
-```
-
-<!-- \# Install Ansible in a Virtual Environment
-```bash
-sudo apt  install curl -y
-sudo apt install dialog -y
-sudo apt install <your version python>-venv -y 
-python3 -m venv venv_ansible
-venv_ansible/bin/pip3 install ansible
-source venv_ansible/bin/activate
-``` -->
-
-<!-- # Run a Playbook
-
-```bash 
-ansible-playbook --ask-become-pass <playbook.yaml>
-``` -->
