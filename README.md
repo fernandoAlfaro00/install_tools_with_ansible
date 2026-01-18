@@ -1,5 +1,5 @@
 # Install Tools with Ansible
-![alt text](demo.gif)
+![alt text](images/demo.gif)
 
 # Requirements
 - Python 3.x
