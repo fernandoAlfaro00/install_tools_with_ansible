@@ -1,16 +1,17 @@
-- name: install zsh
-  apt:
-    state: present
-    name:
-      - zsh
+# - name: install zsh
+#   apt:
+#     state: present
+#     update_cache: yes
+#     name:
+#       - zsh
 
-- name: Download ohmyzsh
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: "/home/{{ current_user }}/install.sh"
+# - name: Download ohmyzsh
+#   ansible.builtin.get_url:
+#     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+#     dest: "/tmp/install.sh"
 
-- name: Install ohmyzsh
-  ansible.builtin.script:
-    cmd: "/home/{{ current_user }}/install.sh"
-  ignore_errors: true
-  
+# - name: Install ohmyzsh
+#   ansible.builtin.script:
+#     cmd: "/tmp/install.sh"
+#   # ignore_errors: true
+    

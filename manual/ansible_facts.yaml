@@ -1,0 +1,14 @@
+- hosts: localhost
+  gather_facts: yes
+  tasks:
+    - name: Ver codename
+      debug:
+        msg: "{{ ansible_facts['lsb']['codename'] }}"
+
+    - name: Ver distro
+      debug:
+        msg: "{{ ansible_facts['lsb']['id'] | lower }}"
+  
+    - name: Ver distro
+      debug:
+        msg: "{{ ansible_facts['architecture'] }}"

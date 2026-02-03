@@ -6,7 +6,7 @@
     name:
       - gnupg
       
-- name:  download the package signing key for the HashiCorp Debian repository.
+- name:  download the package signing key for the HashiCorp repository.
   ansible.builtin.get_url:
     url: https://apt.releases.hashicorp.com/gpg
     dest: /tmp/hashicorp-archive-keyring.asc

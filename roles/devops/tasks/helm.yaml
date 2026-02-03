@@ -8,7 +8,6 @@
       - gpg
       - apt-transport-https
 
-
 - name:  Helm - Install the Helm GPG key.
   ansible.builtin.get_url:
     url: https://packages.buildkite.com/helm-linux/helm-debian/gpgkey
